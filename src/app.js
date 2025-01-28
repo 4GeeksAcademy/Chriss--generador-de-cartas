@@ -15,16 +15,14 @@ function cardGenerate() {
   document.querySelector('#button').innerHTML = suits[indexSuits];
   document.querySelector('#number').innerHTML = numbers[indexNumbers];
 
-  if (suits[indexSuits] == '♦' || suits[indexSuits] == '♥') {
-    document.querySelector('#top').className = 'text-danger'
-    document.querySelector('#button').className = 'text-danger'
-  }
+  let isRed = (suits[indexSuits] == '♦' || suits[indexSuits] == '♥')
+  document.querySelector('#top').className = isRed ? 'text-danger' :'text-dark'
+  document.querySelector('#button').className = isRed ? 'text-danger' : 'text-dark'
 }
-
 
 
 window.onload = function() {
   cardGenerate()
-  document.querySelector('btnNewCard').addEventListener('click', cardGenerate);
+  document.querySelector('#btnNewCard').addEventListener('click', cardGenerate);
 };
  setInterval(cardGenerate, 1000)
